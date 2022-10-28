@@ -22,17 +22,15 @@ services:
       - "5432:5432"
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data 
-    environment:
-      - POSTGRES_PASSWORD=${process.env.DATABASE_PASSWORD}
-      - POSTGRES_DB=devtraining
+    env_file:
+      - .env
 
   pgadmin:
     image: dpage/pgadmin4
     container_name: devtraining-pgadmin
     tty: true 
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=${process.env.PGADMIN_DEFAULT_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${process.env.PGADMIN_DEFAULT_PASSWORD}
+    env_file:
+      .env
     ports:
       - "8000:80"
     depends_on:
