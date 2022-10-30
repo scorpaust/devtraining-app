@@ -6,4 +6,4 @@ npm run build
 
 npx typeorm migration:run -d dist/database.providers.js
 
-npm start:dev
+npm run start:dev
