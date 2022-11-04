@@ -6,7 +6,11 @@ import { CoursesModule } from './courses/courses.module';
 import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [CoursesModule, DatabaseModule, ConfigModule.forRoot({ isGlobal: true })],
+  imports: [
+    CoursesModule,
+    DatabaseModule,
+    ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -16,15 +16,15 @@ describe('CourseService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-  })
+  });
 
   it('should create a course', async () => {
     const expectedOutputTags = [
       {
         id,
         name: 'nestjs',
-        created_at: date 
-      }
+        created_at: date,
+      },
     ];
 
     const expectedOutputCourse = {
@@ -32,12 +32,12 @@ describe('CourseService', () => {
       name: 'Nestjs Fundamentals Course',
       description: 'Nestjs Fundamentals Course - Test',
       created_at: date,
-      tags: expectedOutputTags 
+      tags: expectedOutputTags,
     };
 
     const mockCourseRepository = {
       create: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse)),
-      save: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse))
+      save: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse)),
     };
 
     const mockTagRepository = {
@@ -54,7 +54,7 @@ describe('CourseService', () => {
     const createCourseDto: CreateCourseDto = {
       name: 'Nestjs Fundamentals Course',
       description: 'Nestjs Fundamentals Course - Test',
-      tags: ['nestjs']
+      tags: ['nestjs'],
     };
 
     const newCourse = await service.create(createCourseDto);
@@ -62,15 +62,15 @@ describe('CourseService', () => {
     expect(mockCourseRepository.save).toHaveBeenCalled();
 
     expect(expectedOutputCourse).toStrictEqual(newCourse);
-  })
+  });
 
   it('should list courses', async () => {
     const expectedOutputTags = [
       {
         id,
         name: 'nestjs',
-        created_at: date 
-      }
+        created_at: date,
+      },
     ];
 
     const expectedOutputCourses = [
@@ -79,13 +79,15 @@ describe('CourseService', () => {
         name: 'Nestjs Fundamentals Course',
         description: 'Nestjs Fundamentals Course - Test',
         created_at: date,
-        tags: expectedOutputTags 
-      }
+        tags: expectedOutputTags,
+      },
     ];
 
     const mockCourseRepository = {
-      findAll: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourses)),
-      find: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourses))
+      findAll: jest
+        .fn()
+        .mockReturnValue(Promise.resolve(expectedOutputCourses)),
+      find: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourses)),
     };
 
     //@ts-expect-error defined part of methods
@@ -98,13 +100,13 @@ describe('CourseService', () => {
     expect(courses).toStrictEqual(expectedOutputCourses);
   });
 
-  it ('should get a specific course', async () => {
+  it('should get a specific course', async () => {
     const expectedOutputTags = [
       {
         id,
         name: 'nestjs',
-        created_at: date 
-      }
+        created_at: date,
+      },
     ];
 
     const expectedOutputCourse = {
@@ -112,11 +114,11 @@ describe('CourseService', () => {
       name: 'Nestjs Fundamentals Course',
       description: 'Nestjs Fundamentals Course - Test',
       created_at: date,
-      tags: expectedOutputTags 
+      tags: expectedOutputTags,
     };
 
     const mockCourseRepository = {
-      findOne: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse))
+      findOne: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse)),
     };
 
     //@ts-expect-error defined part of methods
@@ -129,13 +131,13 @@ describe('CourseService', () => {
     expect(expectedOutputCourse).toStrictEqual(course);
   });
 
-  it ('should update a course', async () => {
+  it('should update a course', async () => {
     const expectedOutputTags = [
       {
         id,
         name: 'nestjs',
-        created_at: date 
-      }
+        created_at: date,
+      },
     ];
 
     const expectedOutputCourse = {
@@ -143,14 +145,13 @@ describe('CourseService', () => {
       name: 'Nestjs Fundamentals Course',
       description: 'Nestjs Fundamentals Course - Test',
       created_at: date,
-      tags: expectedOutputTags 
+      tags: expectedOutputTags,
     };
-
 
     const mockCourseRepository = {
       update: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse)),
       save: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse)),
-      preload: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse))
+      preload: jest.fn().mockReturnValue(Promise.resolve(expectedOutputCourse)),
     };
 
     const mockTagRepository = {
@@ -164,11 +165,10 @@ describe('CourseService', () => {
     //@ts-expect-error defined part of methods
     service['tagRepository'] = mockTagRepository;
 
-
     const updateCourseDto: UpdateCourseDto = {
       name: 'Nestjs Fundamentals Course',
       description: 'Nestjs Fundamentals Course - Test',
-      tags: ['nestjs']
+      tags: ['nestjs'],
     };
 
     const course = await service.update(id, updateCourseDto);
@@ -183,8 +183,8 @@ describe('CourseService', () => {
       {
         id,
         name: 'nestjs',
-        created_at: date 
-      }
+        created_at: date,
+      },
     ];
 
     const expectedOutputCourse = {
@@ -192,7 +192,7 @@ describe('CourseService', () => {
       name: 'Nestjs Fundamentals Course',
       description: 'Nestjs Fundamentals Course - Test',
       created_at: date,
-      tags: expectedOutputTags 
+      tags: expectedOutputTags,
     };
 
     const mockCourseRepository = {
@@ -209,5 +209,4 @@ describe('CourseService', () => {
 
     expect(expectedOutputCourse).toStrictEqual(course);
   });
-
 });

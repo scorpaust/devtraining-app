@@ -1,4 +1,3 @@
-
 import { DataSource } from 'typeorm';
 import { Course } from './models/course.model';
 import { Tag } from './models/tag.model';

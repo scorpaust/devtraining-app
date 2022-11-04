@@ -6,7 +6,6 @@ services:
     build: .
     entrypoint: .docker/entrypoint.sh
     container_name: devtraining-app
-    tty: true
     ports: 
       - "3001:3000"
     volumes:
@@ -23,8 +22,10 @@ services:
       - "5432:5432"
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data 
-    env_file:
-      - .env
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dinis1981!$ 
+      - POSTGRES_DB=devtraining 
 
   pgadmin:
     image: dpage/pgadmin4
