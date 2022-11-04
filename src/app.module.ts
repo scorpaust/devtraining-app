@@ -9,7 +9,7 @@ import { DatabaseModule } from './database/database.module';
   imports: [
     CoursesModule,
     DatabaseModule,
-    ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+    ConfigModule.forRoot({ envFilePath: '/../.env', isGlobal: true }),
   ],
   controllers: [AppController],
   providers: [AppService],
