@@ -22,17 +22,15 @@ services:
       - "5432:5432"
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data 
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=dinis1981!$ 
-      - POSTGRES_DB=devtraining 
+    env_file:
+     - src/common/envs/.env
 
   pgadmin:
     image: dpage/pgadmin4
     container_name: devtraining-pgadmin
     tty: true 
     env_file:
-      .env
+     - src/common/envs/.env
     ports:
       - "8000:80"
     depends_on:
